@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+state/seen_posts.json
+.venv/
