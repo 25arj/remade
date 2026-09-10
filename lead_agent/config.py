@@ -23,6 +23,8 @@ class Config:
     reddit_user_agent: str
     anthropic_api_key: str
     slack_webhook_url: str
+    google_service_account_file: str
+    google_sheet_id: str
 
 
 def load_config(path: str = "config.yaml") -> Config:
@@ -35,6 +37,8 @@ def load_config(path: str = "config.yaml") -> Config:
         "REDDIT_USER_AGENT": "reddit_user_agent",
         "ANTHROPIC_API_KEY": "anthropic_api_key",
         "SLACK_WEBHOOK_URL": "slack_webhook_url",
+        "GOOGLE_SERVICE_ACCOUNT_FILE": "google_service_account_file",
+        "GOOGLE_SHEET_ID": "google_sheet_id",
     }
     env_values = {}
     missing = []

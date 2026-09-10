@@ -1,0 +1,7 @@
+Hey {company} team,
+
+[PLACEHOLDER - replace this with the exact message you want sent to every
+lead. Use {company} anywhere you want it personalized with the company
+name/site title found for that lead.]
+
+Tell me the message you want and I'll drop it in here for you.

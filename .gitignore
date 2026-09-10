@@ -2,4 +2,8 @@
 __pycache__/
 *.pyc
 state/seen_posts.json
+state/cold_outreach_state.json
+state/gmail_token.json
+service_account.json
+gmail_credentials.json
 .venv/

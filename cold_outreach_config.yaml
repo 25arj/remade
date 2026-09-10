@@ -1,0 +1,39 @@
+# Tune this file without touching any code.
+
+# Describe your ICP in your own words - this steers the search queries
+# below. (The actual queries still need to be written out explicitly;
+# this description is just for your own reference and future tuning.)
+icp_description: >
+  Small business owners and solo operators (roughly 5-50 employees) who
+  are clearly doing manual, repetitive admin work and would be a good fit
+  for an AI/workflow automation service - agencies, ecommerce brands,
+  local service businesses, consultants.
+
+# Google Programmable Search Engine queries (Custom Search JSON API, free
+# tier: 100 queries/day) used to find candidate company websites. Tune
+# these to your ICP - the more specific, the better the fit.
+search_queries:
+  - "marketing agency" "contact us" small business
+  - "ecommerce brand" "get in touch"
+  - "consulting firm" contact email
+
+# Results pulled per query, per run.
+results_per_query: 10
+
+# Hard cap on cold emails sent per run/day. Keep this LOW (20-30) on a
+# fresh Gmail account and ramp it up over a few weeks as the mailbox
+# warms up - sending 100/day from day one on a free Gmail account will
+# get it flagged as spam or suspended. Raise this once warmed up, or once
+# you move to a dedicated sending tool (Instantly/Smartlead) for real
+# volume.
+daily_send_cap: 25
+
+subject_line: "quick question"
+
+# The exact message sent to every lead. {company} gets replaced with the
+# lead's company/site name. Edit this file directly with your real pitch.
+message_template_file: cold_outreach/message_template.txt
+
+sheet_tab_name: "Cold Email Leads"
+
+state_file: state/cold_outreach_state.json

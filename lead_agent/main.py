@@ -6,6 +6,7 @@ from lead_agent.config import load_config
 from lead_agent.notifier import send_to_slack
 from lead_agent.qualifier import qualify
 from lead_agent.reddit_source import find_candidates, make_reddit_client
+from lead_agent.sheet_log import get_worksheet, log_lead
 from lead_agent.state import load_seen_ids, save_seen_ids
 
 logging.basicConfig(level=logging.INFO, format="%(asctime)s %(levelname)s %(message)s")
@@ -25,6 +26,7 @@ def run() -> None:
         return
 
     claude = anthropic.Anthropic(api_key=config.anthropic_api_key)
+    worksheet = get_worksheet(config.google_service_account_file, config.google_sheet_id)
     leads_sent = 0
 
     for candidate in candidates:
@@ -44,6 +46,10 @@ def run() -> None:
         )
 
         if result.is_lead and result.fit_score >= config.score_threshold:
+            try:
+                log_lead(worksheet, result)
+            except Exception:
+                logger.exception("Failed to log lead to Google Sheet for post %s", candidate.id)
             try:
                 send_to_slack(config.slack_webhook_url, result)
                 leads_sent += 1
